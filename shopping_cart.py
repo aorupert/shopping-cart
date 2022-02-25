@@ -1,5 +1,4 @@
-# shopping_cart.py
-
+# SETUP CELL
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,15 +24,6 @@ products = [
 
 
 def to_usd(my_price):
-    """
-    Converts a numeric value to usd-formatted string, for printing and display purposes.
-
-    Param: my_price (int or float) like 4000.444444
-
-    Example: to_usd(4000.444444)
-
-    Returns: $4,000.44
-    """
     return f"${my_price:,.2f}" #> $12,000.71
 
 
@@ -42,31 +32,62 @@ def to_usd(my_price):
 
 #ask for user input
 #input product identifier
+#datetime functions with help from progamiz
+from datetime import date
+today = date.today()
+from datetime import datetime
+now = datetime.now()
+dt_string = now.strftime("%m/%d/%Y %H:%M %p")
+
+
+
+
+
+#selected_ids = []
+selected_products = []
+
+
+
 
 while True:
-    product_id = input("Please input a product identifier:")
-    print(product_id)
+    product_id = input("Please input a product identifier, or 'DONE' if there are no more items:")
+    #print(product_id)
     #look up corresponding products
     if product_id == "DONE":
-         break  
-    #print the product that has an id attribute equal to 9
+        break
 
-    matching_products = []
-
+    #matching_products = [] 
     for x in products:
-        #if x == 3:
-            #____.append(x)
-        if str(x["id"]) == str(product_id):
-            #this is a match
-            matching_products.append(x)
-        
-    print(matching_products)
+        if str(x["id"]) == str(product_id): #this is a match
+            selected_products.append(x)
+            #matching_products.append(x)
+print("Here's your receipt:")
+print("----------------------")
+print("WHOLE FOODS")
+print("WWW.WHOLE-FOODS.COM")
+print("----------------------")
+print("CHECKOUT AT:", dt_string)
+total_price = 0
+#tax = 0
+#grand_total = 0
+#print(selected_products)
+for selected_product in selected_products:
+    print(selected_product["name"], selected_product["price"])
+    total_price = total_price + selected_product["price"]
 
-    #print the name of the matching product
-    #print(type(matching_products))
-    #print(len(matching_products))
+print(to_usd(total_price))
+tax = total_price * 0.3
+grand_total = total_price + tax
+print(to_usd(tax))
+print(to_usd(grand_total))
 
-    matching_product = matching_products[0]
-    print(matching_product["name"], matching_product["price"])
-
+#print("SELECTED PRODUCT: ")
+#print(matching_product["name"] + " " + str(matching_product["price"]))
+print("----------------------")
+print("SUBTOTAL: " + '$' + format(total_price, '.2f')) #got this from stack overflow
+print("TAX: " + '$' + format(tax, '.2f'))
+print("TOTAL: " + '$' + format(grand_total, '.2f'))
+print("----------------------")
+print("THANK YOU, SEE YOU AGAIN SOON!")
+print("----------------------")
 
