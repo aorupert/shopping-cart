@@ -75,11 +75,11 @@ for selected_product in selected_products:
     print(selected_product["name"], selected_product["price"])
     total_price = total_price + selected_product["price"]
 
-print(to_usd(total_price))
+#print(to_usd(total_price))
 tax = total_price * 0.3
 grand_total = total_price + tax
-print(to_usd(tax))
-print(to_usd(grand_total))
+#print(to_usd(tax))
+#print(to_usd(grand_total))
 
 #print("SELECTED PRODUCT: ")
 #print(matching_product["name"] + " " + str(matching_product["price"]))
