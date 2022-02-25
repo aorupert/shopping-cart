@@ -67,16 +67,18 @@ print("WHOLE FOODS")
 print("WWW.WHOLE-FOODS.COM")
 print("----------------------")
 print("CHECKOUT AT:", dt_string)
+print("----------------------")
+print("SELECTED ITEMS:")
 total_price = 0
 #tax = 0
 #grand_total = 0
 #print(selected_products)
 for selected_product in selected_products:
-    print(selected_product["name"], selected_product["price"])
+    print(selected_product["name"], to_usd(selected_product["price"]))
     total_price = total_price + selected_product["price"]
 
 #print(to_usd(total_price))
-tax = total_price * 0.3
+tax = total_price * 0.0875
 grand_total = total_price + tax
 #print(to_usd(tax))
 #print(to_usd(grand_total))
